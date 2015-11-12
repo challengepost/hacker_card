@@ -1,5 +1,6 @@
 .user-photo, .user-avatar {
-  border-radius: 50%; }
+  border-radius: 50%; 
+}
 
 .user-entry {
   text-align: center;
@@ -7,7 +8,12 @@
 
 .entry-body h5 {
   font-weight: bold;
+  font-size: 1.2em;
 } 
+
+.entry-body img {
+  width: 45%;
+}
 
 .entry-body p {
   color: rgb(87, 85, 83);
@@ -24,7 +30,7 @@
 
 .user-entry header {
   height: 70px; 
-  background-image: url(/devpost-reversed-rgb.svg);
+  background-image: url(/devpost-rgb.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-color: #003E54;
@@ -74,6 +80,6 @@
 
 .hacker-tile {
   cursor: pointer;
-  max-width: 300px;
+  max-width: 310px;
   font-family: 'HelveticaNeue', sans-serif;
 }

@@ -13,14 +13,13 @@
       <div class='hacker-card' on-click="goToProfile">
         <div class="gallery-item">
           <div class="user-entry">
-            <header></header>
             <div class='entry-body'>
               <h5>
                 {{user.name}}
-                <span class="paragraph-end"></span>
               </h5>
 
-              <p>{{user.bio}}</p>
+              <p>on</p>
+              <img src='devpost-rgb.svg'>
             </div>
 
             <footer>
@@ -73,8 +72,60 @@
 
   <dom-module id="hacker-tile">
     <template>
-      <div class='hacker-card' on-click="goToProfile">
-        <img>  
+      <style>
+        .hacker-container {
+          border-color: #b3b3b3;
+          box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.4);
+        }
+        .portfolio-link {
+          padding: 10px;
+          display: block;
+          color: black !important;
+          text-decoration: none;
+        }
+        .logo-container {
+          width: 20%;
+          float: left;
+        }
+        .logo-container img {
+          margin-right: 1em;
+          margin-top: 2px;
+        }
+        .user-container {
+          width: 80%;
+          margin-left: 20%;
+        }
+        .user-stats {
+          font-size: 0.6875em;
+          color: #999794;
+        }
+        .user-stats .count {
+          font-size: 1em;
+          color: black;
+          font-weight: bold;
+        }
+        .view-portfolio {
+          margin-bottom: 0.5em;
+        }
+      </style>
+      <div class='hacker-tile hacker-container' on-click="goToProfile">
+        <a class="portfolio-link" href="http://devpost.com/{{ userName }}" target="_blank">
+          <div class="logo-container">
+            <img src="devpost-icon-rgb.svg">
+          </div>
+          <div class="user-container">
+            <div class="view-portfolio">
+              <strong>{{ user.name }}</strong> on Devpost
+            </div>
+            <div class="user-stats">
+              <span class="count">{{user.projects_count}}</span> Projects
+              &middot;
+              <span class="count">{{user.hackathons_count}}</span> Hackathons
+              &middot;
+              <span class="count">{{user.followers_count}}</span> Followers 
+            </div>
+          </div>
+        </a>
       </div>
     </template>
 
