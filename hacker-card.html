@@ -5,21 +5,98 @@
 </head>
 <body>
   <link rel="import" href="components/bower_components/polymer/polymer.html">
+  <link rel="stylesheet" href="users.css"/>
+  <script src="node_modules/superagent/superagent.js"></script>
+
   <dom-module id="hacker-card">
     <template>
-      <style>
-        span {
-          font-weight: bold;
-        }
-      </style>
-      <div>
-        <span>Some stuff</span>
+      <div class='hacker-card' on-click="goToProfile">
+        <div class="gallery-item">
+          <div class="user-entry">
+            <header></header>
+            <div class='entry-body'>
+              <h5>
+                {{user.name}}
+                <span class="paragraph-end"></span>
+              </h5>
+
+              <p>{{user.bio}}</p>
+            </div>
+
+            <footer>
+              <div class="count">
+                <span>{{user.projects_count}}</span>
+                <br>
+                Projects
+              </div>
+              <div class="count">
+                <span>{{user.hackathons_count}}</span>
+                <br>
+                Hackathons
+              </div>
+              <div class="count">
+                <span>{{user.followers_count}}</span>
+                <br>
+                Followers
+              </div>
+            </footer>
+          </div>
+        </div>  
       </div>
     </template>
 
     <script>
       Polymer({
-        is: 'hacker-card'
+        is: 'hacker-card',
+        properties: {
+          userName: {
+            type: String
+          },
+          user: {
+            type: Object
+          }
+        },
+        goToProfile: function() {
+
+        },
+        ready: function() {
+          var self = this;
+          request
+            .get("https://iii3mdppm7.execute-api.us-east-1.amazonaws.com/prod/UserPortfolioEndpoint/" + this.userName)
+            .end(function(err, res) {
+              window.user = self.user = res.body;
+            });
+        }
+      });
+    </script>
+  </dom-module>
+
+  <dom-module id="hacker-tile">
+    <template>
+      <div class='hacker-card' on-click="goToProfile">
+        <img>  
+      </div>
+    </template>
+
+    <script>
+      Polymer({
+        is: 'hacker-tile',
+        properties: {
+          userName: {
+            type: String
+          },
+          user: {
+            type: Object
+          }
+        },
+        ready: function() {
+          var self = this;
+          request
+            .get("https://iii3mdppm7.execute-api.us-east-1.amazonaws.com/prod/UserPortfolioEndpoint/" + this.userName)
+            .end(function(err, res) {
+              window.user = self.user = res.body;
+            });
+        }
       });
     </script>
   </dom-module>
