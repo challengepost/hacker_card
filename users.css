@@ -1,5 +1,5 @@
 .user-photo, .user-avatar {
-  border-radius: 50%; 
+  border-radius: 50%;
 }
 
 .user-entry {
@@ -9,6 +9,7 @@
 .entry-body h5 {
   font-weight: bold;
   font-size: 1.2em;
+  margin: 0;
 } 
 
 .entry-body img {
@@ -25,11 +26,11 @@
 
 .user-entry, .user-entry:hover, .user-entry:active, .user-entry:focus {
   border-color: #b3b3b3;
-  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.4); 
+  box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.4);
 }
 
 .user-entry header {
-  height: 70px; 
+  height: 70px;
   background-image: url(/devpost-rgb.svg);
   background-repeat: no-repeat;
   background-position: center;
@@ -37,7 +38,7 @@
 }
 
 .user-entry .entry-body h4 {
-  margin-top: 0.5em; 
+  margin-top: 0.5em;
 }
 
 .user-entry footer {
@@ -49,13 +50,13 @@
   display: inline-block;
   width: 32%;
   font-size: 0.6875em;
-  color: #999794; 
+  color: #999794;
 }
 
 .user-entry footer .count span {
   font-weight: bold;
   color: #1a1918;
-  font-size: 1rem; 
+  font-size: 1rem;
 }
 
 .user-entry .user-photo {
@@ -64,12 +65,12 @@
   height: 90px;
   width: 90px;
   margin-top: -52px;
-  border: 3px solid white; 
+  border: 3px solid white;
 }
 
 .user-entry .follow-button-wrapper {
   min-height: 1.5em;
-  margin-bottom: 0.3em; 
+  margin-bottom: 0.3em;
 }
 
 .hacker-card {

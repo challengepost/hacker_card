@@ -1,155 +1,171 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  <link rel="import" href="components/bower_components/polymer/polymer.html">
-  <link rel="stylesheet" href="users.css"/>
-  <script src="node_modules/superagent/superagent.js"></script>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="stylesheet" href="users.css"/>
+<script src="../superagent-dist/superagent.js"></script>
+<script>request = superagent;</script>
 
-  <dom-module id="hacker-card">
-    <template>
-      <div class='hacker-card' on-click="goToProfile">
-        <div class="gallery-item">
-          <div class="user-entry">
-            <div class='entry-body'>
-              <h5>
-                {{user.name}}
-              </h5>
+<!--
+Embeddable hacker cards using the Unofficial Devpost API
 
-              <p>on</p>
-              <img src='devpost-rgb.svg'>
-            </div>
+Example:
 
-            <footer>
-              <div class="count">
-                <span>{{user.projects_count}}</span>
-                <br>
-                Projects
-              </div>
-              <div class="count">
-                <span>{{user.hackathons_count}}</span>
-                <br>
-                Hackathons
-              </div>
-              <div class="count">
-                <span>{{user.followers_count}}</span>
-                <br>
-                Followers
-              </div>
-            </footer>
+    <hacker-card user-name='MGerrior'></hacker-card>
+
+@demo demo/index.html
+@hero devpost-icon-rgb.svg
+-->
+
+<dom-module id="hacker-card">
+  <template>
+    <div class='hacker-card' on-click="goToProfile">
+      <div class="gallery-item">
+        <div class="user-entry">
+          <div class='entry-body'>
+            <h5>
+              {{user.name}}
+            </h5>
+
+            <p>on</p>
+            <img src='devpost-rgb.svg'>
           </div>
-        </div>  
+
+          <footer>
+            <div class="count">
+              <span>{{user.projects_count}}</span>
+              <br>
+              Projects
+            </div>
+            <div class="count">
+              <span>{{user.hackathons_count}}</span>
+              <br>
+              Hackathons
+            </div>
+            <div class="count">
+              <span>{{user.followers_count}}</span>
+              <br>
+              Followers
+            </div>
+          </footer>
+        </div>
       </div>
-    </template>
+    </div>
+  </template>
 
-    <script>
-      Polymer({
-        is: 'hacker-card',
-        properties: {
-          userName: {
-            type: String
-          },
-          user: {
-            type: Object
-          }
+  <script>
+    Polymer({
+      is: 'hacker-card',
+      properties: {
+        userName: {
+          type: String
         },
-        goToProfile: function() {
+        user: {
+          type: Object
+        }
+      },
+      goToProfile: function() {
 
-        },
-        ready: function() {
-          var self = this;
-          request
-            .get("https://iii3mdppm7.execute-api.us-east-1.amazonaws.com/prod/UserPortfolioEndpoint/" + this.userName)
-            .end(function(err, res) {
-              window.user = self.user = res.body;
-            });
-        }
-      });
-    </script>
-  </dom-module>
+      },
+      ready: function() {
+        var self = this;
+        request
+          .get("https://iii3mdppm7.execute-api.us-east-1.amazonaws.com/prod/UserPortfolioEndpoint/" + this.userName)
+          .end(function(err, res) {
+            window.user = self.user = res.body;
+          });
+      }
+    });
+  </script>
+</dom-module>
 
-  <dom-module id="hacker-tile">
-    <template>
-      <style>
-        .hacker-container {
-          border-color: #b3b3b3;
-          box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.4);
-        }
-        .portfolio-link {
-          padding: 10px;
-          display: block;
-          color: black !important;
-          text-decoration: none;
-        }
-        .logo-container {
-          width: 20%;
-          float: left;
-        }
-        .logo-container img {
-          margin-right: 1em;
-          margin-top: 2px;
-        }
-        .user-container {
-          width: 80%;
-          margin-left: 20%;
-        }
-        .user-stats {
-          font-size: 0.6875em;
-          color: #999794;
-        }
-        .user-stats .count {
-          font-size: 1em;
-          color: black;
-          font-weight: bold;
-        }
-        .view-portfolio {
-          margin-bottom: 0.5em;
-        }
-      </style>
-      <div class='hacker-tile hacker-container' on-click="goToProfile">
-        <a class="portfolio-link" href="http://devpost.com/{{ userName }}" target="_blank">
-          <div class="logo-container">
-            <img src="devpost-icon-rgb.svg">
+<!--
+Embeddable hacker cards using the Unofficial Devpost API
+
+Example:
+
+    <hacker-tile user-name='MGerrior'></hacker-tile>
+
+@demo demo/index.html
+@hero devpost-icon-rgb.svg
+-->
+
+
+<dom-module id="hacker-tile">
+  <template>
+    <style>
+      .hacker-container {
+        border-color: #b3b3b3;
+        box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.4);
+      }
+      .portfolio-link {
+        padding: 10px;
+        display: block;
+        color: black !important;
+        text-decoration: none;
+      }
+      .logo-container {
+        width: 20%;
+        float: left;
+      }
+      .logo-container img {
+        margin-right: 1em;
+        margin-top: 2px;
+      }
+      .user-container {
+        width: 80%;
+        margin-left: 20%;
+      }
+      .user-stats {
+        font-size: 0.6875em;
+        color: #999794;
+      }
+      .user-stats .count {
+        font-size: 1em;
+        color: black;
+        font-weight: bold;
+      }
+      .view-portfolio {
+        margin-bottom: 0.5em;
+      }
+    </style>
+    <div class='hacker-tile hacker-container' on-click="goToProfile">
+      <a class="portfolio-link" href="http://devpost.com/{{ userName }}" target="_blank">
+        <div class="logo-container">
+          <img src="devpost-icon-rgb.svg">
+        </div>
+        <div class="user-container">
+          <div class="view-portfolio">
+            <strong>{{ user.name }}</strong> on Devpost
           </div>
-          <div class="user-container">
-            <div class="view-portfolio">
-              <strong>{{ user.name }}</strong> on Devpost
-            </div>
-            <div class="user-stats">
-              <span class="count">{{user.projects_count}}</span> Projects
-              &middot;
-              <span class="count">{{user.hackathons_count}}</span> Hackathons
-              &middot;
-              <span class="count">{{user.followers_count}}</span> Followers 
-            </div>
+          <div class="user-stats">
+            <span class="count">{{user.projects_count}}</span> Projects
+            &middot;
+            <span class="count">{{user.hackathons_count}}</span> Hackathons
+            &middot;
+            <span class="count">{{user.followers_count}}</span> Followers
           </div>
-        </a>
-      </div>
-    </template>
+        </div>
+      </a>
+    </div>
+  </template>
 
-    <script>
-      Polymer({
-        is: 'hacker-tile',
-        properties: {
-          userName: {
-            type: String
-          },
-          user: {
-            type: Object
-          }
+  <script>
+    Polymer({
+      is: 'hacker-tile',
+      properties: {
+        userName: {
+          type: String
         },
-        ready: function() {
-          var self = this;
-          request
-            .get("https://iii3mdppm7.execute-api.us-east-1.amazonaws.com/prod/UserPortfolioEndpoint/" + this.userName)
-            .end(function(err, res) {
-              window.user = self.user = res.body;
-            });
+        user: {
+          type: Object
         }
-      });
-    </script>
-  </dom-module>
-</body>
-</html>
+      },
+      ready: function() {
+        var self = this;
+        request
+          .get("https://iii3mdppm7.execute-api.us-east-1.amazonaws.com/prod/UserPortfolioEndpoint/" + this.userName)
+          .end(function(err, res) {
+            window.user = self.user = res.body;
+          });
+      }
+    });
+  </script>
+</dom-module>
