@@ -1,0 +1,23 @@
+{
+  "name": "hacker_card",
+  "version": "1.0.0",
+  "authors": [],
+  "description": "Embeddable hacker cards using the Unofficial Devpost API",
+  "main": "hacker-card.html",
+  "license": "ISC",
+  "homepage": "https://github.com/challengepost/hacker_card",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "superagent-dist": "~1.4.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0"
+  }
+}

@@ -1,14 +1,14 @@
 {
-  "name": "hacker_card",
+  "name": "hacker-card",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Embeddable hacker cards using the Unofficial Devpost API",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower cache clean && bower install"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "superagent": "^1.4.0"
+    "bower" : "^1.3.2"
   }
 }
